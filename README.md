@@ -9,7 +9,7 @@ The mvn command is executed by navigating to the folder containing the pom.xml f
 
 
 	```
-	mvn clean verify serenity:check -Dcucumber.options="--tags @test"
+	mvn clean verify serenity:check -Dcucumber.options="--tags @test4"
 	```
 
 - The test report can be found in folder `{projectDir}/target/serenity/index.html`
