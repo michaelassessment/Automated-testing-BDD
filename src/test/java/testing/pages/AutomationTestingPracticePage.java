@@ -67,6 +67,9 @@ public class AutomationTestingPracticePage extends PageObject {
 	@FindBy (css="#Wikipedia1_wikipedia-search-more")
 	private List<WebElement> searchResultsMore;
 	
+	@FindBy (css="#RESULT_FileUpload-10")
+	private WebElement uploadFile;
+	
 	private static final String TEST_AUTOMATION_URL = "https://testautomationpractice.blogspot.com";
 	
 	public AutomationTestingPracticePage(WebDriver driver) {
@@ -220,5 +223,9 @@ public class AutomationTestingPracticePage extends PageObject {
 			return true;
 		else
 			return false;
+	}
+
+	public void uploadFile(String fileName) {
+		uploadFile.sendKeys("\\src\\test\\resources\\features\\UI\\" + fileName);
 	}
 }

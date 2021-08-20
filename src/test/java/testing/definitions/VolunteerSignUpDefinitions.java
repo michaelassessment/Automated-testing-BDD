@@ -43,6 +43,11 @@ public class VolunteerSignUpDefinitions {
     	volunteerSignup.clickSubmit();
     }
     
+    @When("^I upload the (.*)$")
+    public void uploadFile(String fileName)  {
+    	volunteerSignup.uploadFile(fileName);
+    }
+    
     // Then steps
     
     @Then("^the form fields (.*), (.*), (.*), (.*), (.*), (.*), (.*), (.*), (.*), (.*) are present$")

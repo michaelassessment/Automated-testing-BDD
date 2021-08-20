@@ -130,4 +130,9 @@ public class VolunteerSignUpSteps {
 	public void isNewWindowsSearchSubmitButtonPresent() {
 		automationTestingPractice.isNewWindowsSearchBoxSubmitButtonPresent();
 	}
+
+	public void uploadFile(String fileName) {
+		automationTestingPractice.uploadFile(fileName);
+		
+	}
 }
