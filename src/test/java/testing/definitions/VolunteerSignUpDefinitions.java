@@ -28,12 +28,12 @@ public class VolunteerSignUpDefinitions {
     	volunteerSignup.populateFields(firstName, lastName, phone, country, city, emailAddress, firstNameValue, lastNameValue, phoneValue, countryValue, cityValue, emailAddressValue);
     }
     
-    @When("^I choose the Gender$")
+    @When("^I choose the Gender (.*)$")
     public void chooseGender(String gender)  {
     	volunteerSignup.chooseGender(gender);
     }
     
-    @When("^I select the Day$")
+    @When("^I select the Day (.*)$")
     public void chooseDay(String day)  {
     	volunteerSignup.chooseDay(day);
     }
@@ -50,9 +50,14 @@ public class VolunteerSignUpDefinitions {
     
     // Then steps
     
-    @Then("^the form fields (.*), (.*), (.*), (.*), (.*), (.*), (.*), (.*), (.*), (.*) are present$")
-    public void validateLocationMenuOptionsAccumulations(String firstName, String lastName, String phone, String country, String city, String emailAddress, String gender, String availibility, String time, String upload)  {
-    	volunteerSignup.areFieldsPresent(firstName, lastName, phone, country, city, emailAddress, gender, availibility, time, upload);
+    @Then("^the form fields (.*), (.*), (.*), (.*), (.*), (.*), (.*), (.*), (.*) are present$")
+    public void validateLocationMenuOptionsAccumulations(String firstName, String lastName, String phone, String country, String city, String emailAddress, String gender, String availibility, String time)  {
+    	volunteerSignup.areFieldsPresent(firstName, lastName, phone, country, city, emailAddress, gender, availibility, time);
+    }
+   
+    @Then("^the upload file section is present$")
+    public void isUploadFileSectionPresent() {
+    	volunteerSignup.isUploadFileSectionPresent();
     }
     
     @Then("^the submit button is present$")

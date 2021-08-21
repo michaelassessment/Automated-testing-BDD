@@ -8,9 +8,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import com.gargoylesoftware.htmlunit.html.Keyboard;
-
 import net.thucydides.core.pages.PageObject;
 
 
@@ -19,37 +16,40 @@ public class AutomationTestingPracticePage extends PageObject {
 	@FindBy (className="segment_header")
 	private List<WebElement> heading;
 	
+	@FindBy (className="//*[@class='question left_question_first']")
+	private List<WebElement> uploadFileSection;
+	
 	@FindBy (css="#FSsubmit")
 	private List<WebElement> submitButtonList;
 	
 	@FindBy (css="#FSsubmit")
 	private WebElement submitButton;
 		
-	@FindBy (css="#RESULT_RadioButton-7_0")
+	@FindBy (css="[for='RESULT_RadioButton-7_0']")
 	private WebElement maleRadioButton;
 
-	@FindBy (css="#RESULT_RadioButton-7_1")
+	@FindBy (css="[for='RESULT_RadioButton-7_1']")
 	private WebElement femaleRadioButton;
 	
-	@FindBy (css="#RESULT_CheckBox-8_0")
+	@FindBy (css="[for='RESULT_CheckBox-8_0")
 	private WebElement sunday;
 	
-	@FindBy (css="#RESULT_CheckBox-8_1)")
+	@FindBy (css="[for='RESULT_CheckBox-8_1)")
 	private WebElement monday;
 	
-	@FindBy (css="#RESULT_CheckBox-8_2")
+	@FindBy (css="[for='RESULT_CheckBox-8_2")
 	private WebElement tuesday;
 	
-	@FindBy (css="#RESULT_CheckBox-8_3")
+	@FindBy (css="[for='RESULT_CheckBox-8_3")
 	private WebElement wednesday;
 	
-	@FindBy (css="#RESULT_CheckBox-8_4")
+	@FindBy (css="[for='RESULT_CheckBox-8_4")
 	private WebElement thursday;
 	
-	@FindBy (css="#RESULT_CheckBox-8_5")
+	@FindBy (css="[for='RESULT_CheckBox-8_5")
 	private WebElement friday;
 	
-	@FindBy (css="#RESULT_CheckBox-8_6")
+	@FindBy (css="[for='RESULT_CheckBox-8_6']")
 	private WebElement saturday;
 	
 	@FindBy (css="#Wikipedia1_wikipedia-search-input")
@@ -77,7 +77,9 @@ public class AutomationTestingPracticePage extends PageObject {
 	private WebElement uploadFile;
 	
 	private static final String TEST_AUTOMATION_URL = "https://testautomationpractice.blogspot.com";
-	
+ 	
+ 	private static final String FILE_UPLOAD_PATH = "C:\\Users\\malpka\\Documents\\Dev\\UI\\src\\test\\resources\\features\\UI\\";
+		
 	public AutomationTestingPracticePage(WebDriver driver) {
 	}
 
@@ -85,6 +87,7 @@ public class AutomationTestingPracticePage extends PageObject {
 		
 		super.getDriver().get(TEST_AUTOMATION_URL);
 		
+		super.getDriver().switchTo().frame(0);
 		if (heading.size() > 0)
 			return true;
 		else
@@ -95,7 +98,7 @@ public class AutomationTestingPracticePage extends PageObject {
 		
 		List<WebElement> field = new ArrayList<>();
 
-		field = super.getDriver().findElements(By.xpath(String.format("//label[@class='question top_question'][contains(text(), '%s')]", fieldName)));
+		field = super.getDriver().findElements(By.xpath(String.format("//*[@class='question top_question'][contains(text(), '%s')]", fieldName)));
 		
 		if (field.size() > 0)
 			return true;
@@ -170,7 +173,7 @@ public class AutomationTestingPracticePage extends PageObject {
 		
 		List<WebElement> list = new ArrayList<>();
 
-		list = super.getDriver().findElements(By.xpath(String.format("//div[@id='content'][contains(text(), '%s')])", successMessage)));
+		list = super.getDriver().findElements(By.xpath(String.format("//div[@id='content'][contains(text(), '%s')]", successMessage)));
 		
 		if (list.size() > 0)
 			return true;
@@ -232,7 +235,7 @@ public class AutomationTestingPracticePage extends PageObject {
 	}
 
 	public void uploadFile(String fileName) {
-		uploadFile.sendKeys("\\src\\test\\resources\\features\\UI\\" + fileName);
+		uploadFile.sendKeys(FILE_UPLOAD_PATH + fileName);
 	}
 
 	public boolean doResultsContainSearchText(String searchText) {
@@ -244,12 +247,18 @@ public class AutomationTestingPracticePage extends PageObject {
 		
 		if (evaluatedResults.size() == searchResults.size())
 			return true;
-		
 		else
 			return false;
 	}
 
 	public void hitEnterPerformSearch() {
 		searchInput.sendKeys(Keys.ENTER);		
+	}
+
+	public boolean isUploadFileSectionPresent() {
+		if (uploadFileSection.size() > 0)
+			return true;
+		else
+			return false;
 	}
 }

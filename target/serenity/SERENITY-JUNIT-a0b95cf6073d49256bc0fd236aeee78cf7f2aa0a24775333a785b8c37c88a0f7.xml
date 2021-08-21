@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="UTF-8"?><testsuite errors="0" failures="0" name="New Windows Search" skipped="0" tests="3" time="52.01" timestamp="2021-08-21 11:13:10"><testcase name="Validate page layout"/><testcase name="Perform search click submit button"/><testcase name="Perform search hit enter"/></testsuite>

@@ -1,0 +1,7 @@
+testing\pages\PageObjectEnhanced.class
+testing\steps\NewWindowsSearchSteps.class
+testing\steps\VolunteerSignUpSteps.class
+testing\definitions\VolunteerSignUpDefinitions.class
+testing\pages\AutomationTestingPracticePage.class
+testing\definitions\NewWindowsSearchDefinitions.class
+TestRunner.class

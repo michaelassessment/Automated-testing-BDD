@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"New Windows Search","Validate page layout","SUCCESS","2021-08-21T11:13:10.06+01:00[Europe/London]","0.0","18.4"
+"New Windows Search","Perform search click submit button","SUCCESS","2021-08-21T11:13:28.478+01:00[Europe/London]","0.0","20.61"
+"New Windows Search","Perform search hit enter","SUCCESS","2021-08-21T11:13:49.095+01:00[Europe/London]","0.0","13.0"

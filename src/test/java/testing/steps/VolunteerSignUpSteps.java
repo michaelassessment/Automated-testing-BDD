@@ -17,7 +17,7 @@ public class VolunteerSignUpSteps {
 	}
 	
 	@Step
-	public void areFieldsPresent(String firstName, String lastName, String phone, String country, String city, String emailAddress, String gender, String availability, String time, String upload) {
+	public void areFieldsPresent(String firstName, String lastName, String phone, String country, String city, String emailAddress, String gender, String availability, String time) {
 		SoftAssert softAssert = new SoftAssert();
 		
 		softAssert.assertTrue(automationTestingPractice.isFieldPresent(firstName));
@@ -29,8 +29,6 @@ public class VolunteerSignUpSteps {
 		softAssert.assertTrue(automationTestingPractice.isFieldPresent(gender));
 		softAssert.assertTrue(automationTestingPractice.isFieldPresent(availability));
 		softAssert.assertTrue(automationTestingPractice.isFieldPresent(time));
-		softAssert.assertTrue(automationTestingPractice.isFieldPresent(upload));
-		
 		softAssert.assertAll();
 	}
 	
@@ -44,7 +42,12 @@ public class VolunteerSignUpSteps {
 			String emailAddress, String firstNameValue, String lastNameValue, String phoneValue, String countryValue,
 			String cityValue, String emailAddressValue)
 	{
-		automationTestingPractice.populateField(firstName, firstNameValue);		
+		automationTestingPractice.populateField(firstName, firstNameValue);
+		automationTestingPractice.populateField(lastName, lastNameValue);
+		automationTestingPractice.populateField(phone, phoneValue);
+		automationTestingPractice.populateField(country, countryValue);
+		automationTestingPractice.populateField(city, cityValue);
+		automationTestingPractice.populateField(emailAddress, emailAddressValue);
 	}
 
 	@Step
@@ -132,7 +135,10 @@ public class VolunteerSignUpSteps {
 	}
 
 	public void uploadFile(String fileName) {
-		automationTestingPractice.uploadFile(fileName);
-		
+		automationTestingPractice.uploadFile(fileName);		
+	}
+
+	public void isUploadFileSectionPresent() {
+		automationTestingPractice.isUploadFileSectionPresent();
 	}
 }
