@@ -32,16 +32,25 @@ public class NewWindowsSearchDefinitions {
     	newWindowsSearch.clickSubmitButton();
     }
     
+    @When("^I hit enter for perform search$")
+    public void hitEnterPerformSearch(){
+    	newWindowsSearch.hitEnterPerformSearch();
+    }
+    
     // Then steps
     
     @Then("^I can see some search results$")
     public void areSearchResultsVisible(){
     	newWindowsSearch.areSearchResultsVisible();
     }
-    
-    
+        
     @Then("^I can see more search results$")
     public void isMoreSearchResultsVisible(){
     	newWindowsSearch.isMoreSearchResultsVisible();
+    }
+    
+    @Then("^the results for the search (.*) are valid$")
+    public void validateSearchResults(String searchText) {
+       	newWindowsSearch.validateSearchResults(searchText);
     }
 }

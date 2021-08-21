@@ -4,9 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import com.gargoylesoftware.htmlunit.html.Keyboard;
 
 import net.thucydides.core.pages.PageObject;
 
@@ -50,7 +53,10 @@ public class AutomationTestingPracticePage extends PageObject {
 	private WebElement saturday;
 	
 	@FindBy (css="#Wikipedia1_wikipedia-search-input")
-	private List<WebElement> searchInput;
+	private List<WebElement> searchInputList;
+	
+	@FindBy (css="#Wikipedia1_wikipedia-search-input")
+	private WebElement searchInput;
 	
 	@FindBy (className="wikipedia-search-button")
 	private List<WebElement> submitSearchList;
@@ -180,15 +186,15 @@ public class AutomationTestingPracticePage extends PageObject {
 	}
 		
 	public boolean isNewWindowsSearchBoxPresent() {		
-		if (searchInput.size() > 0)
+		if (searchInputList.size() > 0)
 			return true;
 		else
 			return false;
 	}
 	
 	public void enterTextInNewWindowsSearchBox(String searchText) {
-		searchInput.get(0).clear();
-		searchInput.get(0).sendKeys(searchText);
+		searchInput.clear();
+		searchInput.sendKeys(searchText);
 	}
 	
 	public boolean isNewWindowsSearchBoxSubmitButtonPresent() {		
@@ -227,5 +233,23 @@ public class AutomationTestingPracticePage extends PageObject {
 
 	public void uploadFile(String fileName) {
 		uploadFile.sendKeys("\\src\\test\\resources\\features\\UI\\" + fileName);
+	}
+
+	public boolean doResultsContainSearchText(String searchText) {
+		List<WebElement> evaluatedResults = new ArrayList<>();
+		
+		searchResults.stream()
+        .filter(s -> s.getText().toLowerCase().contains(searchText.toLowerCase()))
+        .forEach(s-> evaluatedResults.add(s));
+		
+		if (evaluatedResults.size() == searchResults.size())
+			return true;
+		
+		else
+			return false;
+	}
+
+	public void hitEnterPerformSearch() {
+		searchInput.sendKeys(Keys.ENTER);		
 	}
 }

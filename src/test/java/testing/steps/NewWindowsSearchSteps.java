@@ -23,11 +23,23 @@ public class NewWindowsSearchSteps {
 		automationTestingPractice.clickNewWindowsSearchBoxPresentSubmitButton();		
 	}
 
+	@Step
 	public void areSearchResultsVisible() {
 		Assert.assertTrue(automationTestingPractice.areSeachResultsPresent());
 	}
 
+	@Step
 	public void isMoreSearchResultsVisible() {
 		Assert.assertTrue(automationTestingPractice.isMoreSeachResultsPresent());
+	}
+
+	@Step
+	public void validateSearchResults(String searchText) {
+		Assert.assertTrue(automationTestingPractice.doResultsContainSearchText(searchText));		
+	}
+
+	@Step
+	public void hitEnterPerformSearch() {
+		automationTestingPractice.hitEnterPerformSearch();
 	}
 }
