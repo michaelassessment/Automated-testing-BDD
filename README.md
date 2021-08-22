@@ -1,4 +1,4 @@
-Maven Automated Test Project for Benchmark autuomated test evaluation
+Maven Automated Test Project for Benchmark automated test evaluation
 ==========================
 This is a maven project. The project consists of a root pom file.
 The mvn command is executed by navigating to the folder containing the pom.xml file and by running the command below using the console 
